@@ -9,5 +9,3 @@ function recursiveSum(arr) {
 
   return recursiveSum(arr);
 }
-
-console.log(recursiveSum([1, 2, 3, 4]));
