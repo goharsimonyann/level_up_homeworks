@@ -1,19 +1,26 @@
-function binarySearch(nums, target) {
-  let mid, left = 0,
-    right = nums.length - 1;
+function binSearchIterative(arr, key) {
+  let left = 0,
+    right = arr.length - 1,
+    mid;
 
-  while (right - left >= 1) {
-    mid = Math.floor((right + left) / 2);
-    
-    if (nums[mid] === target) return mid;
-    
-    if (nums[mid] < target) left = mid + 1;
-    else right = mid;
+  while (left <= right) {
+    mid = Math.floor((left + right) / 2);
+    if (arr[mid] === key) return mid;
+
+    if (arr[mid] < key) left = mid + 1;
+    else right = mid - 1;
   }
 
-  if (nums[left] === target) return left;
-  if (nums[right] === target) return right;
-  
   return -1;
 }
 
+function binSearchRecursive(arr, key, l, r) {
+  let mid = Math.floor((l + r) / 2);
+
+  if (arr[mid] === key) return mid;
+  if (l > r) return -1;
+
+  return arr[mid] < key
+    ? binSearch(arr, key, mid + 1, r)
+    : binSearch(arr, key, l, mid - 1);
+}
