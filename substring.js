@@ -7,7 +7,7 @@ function substring(str1, str2) {
       piece += str1[k];
     }
 
-    if (piece === str2) return 1;    
+    if (piece === str2) return i;    
     piece = "";
   }
 
