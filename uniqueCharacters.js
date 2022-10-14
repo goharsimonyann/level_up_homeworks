@@ -1,14 +1,15 @@
 function uniqueCharacters(str) {
-  let charArr = str
-    .split("")
-    .map((char, i) => {
-      return str.charCodeAt(i);
-    })
-    .sort();
+  let hashedStr = [...str].reduce((aggr, char) => {
+    aggr[char] ? aggr[char]++ : aggr[char] = 1;
+    return aggr;
+  }, {});
 
-  for (let i = 0; i < charArr.length; ++i) {
-    if (charArr[i] === charArr[i + 1]) return false;
+  for (let i = 0; i < Object.values(hashedStr).length; ++i) {
+    if (Object.values(hashedStr)[i] > 1) {
+      return false;
+    }
   }
 
   return true;
 }
+
